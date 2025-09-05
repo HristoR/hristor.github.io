@@ -86,7 +86,7 @@
         .hero-container {
             max-width: 1200px;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1.2fr 0.8fr;
             gap: 4rem;
             align-items: center;
         }
@@ -109,7 +109,7 @@
         .hero-content h2 {
             font-size: 2rem;
             font-weight: 300;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             color: var(--text-dark);
         }
 
@@ -120,39 +120,36 @@
             line-height: 1.8;
         }
 
-        .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin: 3rem 0;
+        .core-expertise {
+            margin: 2rem 0;
         }
 
-        .stat {
-            text-align: center;
-            padding: 1.5rem;
+        .core-expertise h3 {
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+
+        .expertise-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .expertise-tag {
             background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
+            border: 2px solid var(--primary-earth);
+            color: var(--primary-earth);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
         }
 
-        .stat:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--accent-coral);
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            color: var(--text-light);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.8rem;
+        .expertise-tag:hover {
+            background: var(--primary-earth);
+            color: white;
+            transform: translateY(-2px);
         }
 
         .cta-buttons {
@@ -191,32 +188,6 @@
         .btn-secondary:hover {
             background: var(--primary-earth);
             color: white;
-        }
-
-        .hero-visual {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .visual-box {
-            width: 350px;
-            height: 350px;
-            background: linear-gradient(135deg, var(--accent-teal) 0%, var(--accent-coral) 100%);
-            border-radius: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            font-weight: 700;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
         }
 
         /* Projects Section */
@@ -263,35 +234,45 @@
             box-shadow: var(--shadow-hover);
         }
 
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #667EEA, #764BA2);
+            display: block;
+        }
+
         .project-header {
-            padding: 2rem;
-            color: white;
+            padding: 1.5rem 2rem 1rem;
             position: relative;
         }
 
         .project-type {
             font-size: 0.9rem;
-            opacity: 0.9;
+            color: var(--text-light);
             margin-bottom: 0.5rem;
         }
 
         .project-header h3 {
             font-size: 1.8rem;
             margin-bottom: 0.5rem;
+            color: var(--primary-dark);
         }
 
         .platform-badge {
             position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 0.3rem 0.8rem;
+            top: -25px;
+            right: 1.5rem;
+            background: var(--accent-teal);
+            color: white;
+            padding: 0.4rem 1rem;
             border-radius: 20px;
             font-size: 0.8rem;
+            font-weight: 600;
         }
 
         .project-details {
-            padding: 2rem;
+            padding: 0 2rem 2rem;
         }
 
         .project-role {
@@ -360,8 +341,8 @@
         }
 
         .tech-tag {
-            background: var(--primary-earth);
-            color: white;
+            background: var(--light-gray);
+            color: var(--text-dark);
             padding: 0.4rem 0.9rem;
             border-radius: 15px;
             font-size: 0.8rem;
@@ -375,19 +356,19 @@
         }
 
         .tools-container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
+        }
+
+        .tools-header {
             text-align: center;
+            margin-bottom: 3rem;
         }
 
         .tools-header h3 {
             font-size: 2.5rem;
             margin-bottom: 1rem;
             color: var(--primary-dark);
-        }
-
-        .tools-header .highlight {
-            color: var(--accent-coral);
         }
 
         .tools-description {
@@ -399,46 +380,75 @@
             margin-right: auto;
         }
 
-        .tools-grid {
+        .excel-showcase-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-bottom: 3rem;
         }
 
-        .tool-item {
+        .excel-card {
             background: white;
-            padding: 2rem;
             border-radius: 15px;
+            padding: 1.5rem;
             box-shadow: 0 5px 15px rgba(0,0,0,0.08);
             transition: all 0.3s ease;
         }
 
-        .tool-item:hover {
+        .excel-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-hover);
         }
 
-        .tool-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--accent-teal), var(--accent-coral));
-            border-radius: 15px;
-            margin: 0 auto 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
+        .excel-card h4 {
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
         }
 
-        .tool-item h4 {
-            color: var(--primary-dark);
+        .excel-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .excel-visuals {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .excel-visual {
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .excel-visual img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
             margin-bottom: 0.5rem;
         }
 
-        .tool-item p {
+        .excel-visual-placeholder {
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(135deg, var(--light-gray), var(--medium-gray));
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: var(--text-light);
-            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .excel-visual p {
+            font-size: 0.8rem;
+            color: var(--text-light);
         }
 
         /* Skills Section */
@@ -462,21 +472,8 @@
             color: var(--primary-dark);
             margin-bottom: 1.5rem;
             font-size: 1.3rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .skill-category h3 .icon {
-            width: 30px;
-            height: 30px;
-            background: var(--primary-earth);
-            border-radius: 8px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 0.9rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-earth);
         }
 
         .skill-list {
@@ -484,46 +481,18 @@
         }
 
         .skill-item {
-            padding: 1rem;
-            margin-bottom: 1rem;
+            padding: 0.8rem 1rem;
+            margin-bottom: 0.8rem;
             background: var(--light-gray);
-            border-radius: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            border-radius: 8px;
             transition: all 0.3s ease;
-        }
-
-        .skill-item:hover {
-            background: var(--medium-gray);
-            transform: translateX(5px);
-        }
-
-        .skill-name {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
             font-weight: 500;
         }
 
-        .skill-icon {
-            width: 24px;
-            height: 24px;
-            background: var(--accent-teal);
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .skill-item:hover {
+            background: var(--primary-earth);
             color: white;
-            font-size: 0.8rem;
-        }
-
-        .skill-level {
-            font-size: 0.8rem;
-            color: var(--text-light);
-            background: white;
-            padding: 0.2rem 0.6rem;
-            border-radius: 10px;
+            transform: translateX(5px);
         }
 
         /* About Section */
@@ -567,12 +536,7 @@
 
         .contact h3 {
             font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .contact p {
             margin-bottom: 2rem;
-            opacity: 0.9;
         }
 
         .contact-buttons {
@@ -587,20 +551,18 @@
             justify-content: center;
             gap: 3rem;
             margin-top: 2rem;
-            opacity: 0.8;
+            opacity: 0.9;
         }
 
         .contact-info a {
             color: white;
             text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
             transition: opacity 0.3s ease;
         }
 
         .contact-info a:hover {
             opacity: 1;
+            text-decoration: underline;
         }
 
         /* Footer */
@@ -623,8 +585,8 @@
                 font-size: 2.5rem;
             }
 
-            .hero-stats {
-                grid-template-columns: 1fr;
+            .expertise-tags {
+                justify-content: center;
             }
 
             .nav-links {
@@ -635,7 +597,7 @@
                 grid-template-columns: 1fr;
             }
 
-            .tools-grid {
+            .excel-showcase-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -678,30 +640,21 @@
                 <h2>Game Producer</h2>
                 <p class="subtitle">Transforming creative visions into shipped games through AGILE leadership, data-driven production, and innovative tool development</p>
                 
-                <div class="hero-stats">
-                    <div class="stat">
-                        <div class="stat-number">3</div>
-                        <div class="stat-label">Projects Led</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">35+</div>
-                        <div class="stat-label">Team Members</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">4</div>
-                        <div class="stat-label">Tools Developed</div>
+                <div class="core-expertise">
+                    <h3>Core Expertise</h3>
+                    <div class="expertise-tags">
+                        <span class="expertise-tag">AGILE/SCRUM</span>
+                        <span class="expertise-tag">Team Leadership</span>
+                        <span class="expertise-tag">Sprint Planning</span>
+                        <span class="expertise-tag">Risk Management</span>
+                        <span class="expertise-tag">Production Tools</span>
+                        <span class="expertise-tag">Cross-Team Coordination</span>
                     </div>
                 </div>
 
                 <div class="cta-buttons">
                     <a href="#projects" class="btn btn-primary">View Projects</a>
                     <a href="#contact" class="btn btn-secondary">Get in Touch</a>
-                </div>
-            </div>
-
-            <div class="hero-visual">
-                <div class="visual-box">
-                    AGILE<br>PRODUCER
                 </div>
             </div>
         </div>
@@ -717,10 +670,11 @@
         <div class="projects-grid">
             <!-- Ascension Protocol -->
             <div class="project-card">
-                <div class="project-header" style="background: linear-gradient(135deg, #667EEA, #764BA2);">
+                <div class="project-image" style="background: linear-gradient(135deg, #667EEA, #764BA2);"></div>
+                <div class="project-header">
+                    <span class="platform-badge">Custom Engine</span>
                     <span class="project-type">Finished Project • 10-Person Team</span>
                     <h3>Ascension Protocol</h3>
-                    <span class="platform-badge">Custom Engine</span>
                 </div>
                 <div class="project-details">
                     <div class="project-role">Lead Producer</div>
@@ -735,24 +689,24 @@
                     </ul>
                     <div class="project-links">
                         <a href="https://www.youtube.com/watch?v=r9AC-AtrcQo" class="project-link" target="_blank">
-                            🎬 Watch Trailer
+                            Watch Trailer →
                         </a>
                     </div>
                     <div class="project-tech">
                         <span class="tech-tag">GitHub Projects</span>
                         <span class="tech-tag">Codecks</span>
                         <span class="tech-tag">AGILE</span>
-                        <span class="tech-tag">Stakeholder Mgmt</span>
                     </div>
                 </div>
             </div>
 
             <!-- Crow's Nest -->
             <div class="project-card">
-                <div class="project-header" style="background: linear-gradient(135deg, #4ECDC4, #44A08D);">
+                <div class="project-image" style="background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200"><rect fill="%234ECDC4" width="400" height="200"/><text x="50%" y="50%" font-size="24" fill="white" text-anchor="middle" dominant-baseline="middle">CROW\'S NEST</text></svg>');"></div>
+                <div class="project-header">
+                    <span class="platform-badge">Unreal Engine</span>
                     <span class="project-type">Shipped Game • 13-Person Team</span>
                     <h3>Crow's Nest</h3>
-                    <span class="platform-badge">Unreal Engine</span>
                 </div>
                 <div class="project-details">
                     <div class="project-role">Producer & System Designer</div>
@@ -763,32 +717,32 @@
                     <ul class="project-achievements">
                         <li>Implemented SCRUM methodology via Trello for 13-person team</li>
                         <li>Designed and balanced core gameplay systems (3Cs)</li>
-                        <li>Facilitated cross-discipline communication between art, design, and programming</li>
+                        <li>Facilitated cross-discipline communication</li>
                     </ul>
                     <div class="project-links">
                         <a href="https://youtu.be/zumq-_EeMic" class="project-link" target="_blank">
-                            🎬 Watch Trailer
+                            Watch Trailer →
                         </a>
                     </div>
                     <div class="project-tech">
                         <span class="tech-tag">Trello</span>
                         <span class="tech-tag">SCRUM</span>
                         <span class="tech-tag">System Design</span>
-                        <span class="tech-tag">Cross-Team Lead</span>
                     </div>
                 </div>
             </div>
 
             <!-- Soaked in Sin -->
             <div class="project-card">
-                <div class="project-header" style="background: linear-gradient(135deg, #FF6B6B, #FFA500);">
-                    <span class="project-type">Global Game Jam 2025 • Released on Steam</span>
-                    <h3>Soaked in Sin</h3>
+                <div class="project-image" style="background: linear-gradient(135deg, #FF6B6B, #FFA500);"></div>
+                <div class="project-header">
                     <span class="platform-badge">Unreal Engine 5</span>
+                    <span class="project-type">Global Game Jam 2025</span>
+                    <h3>Soaked in Sin</h3>
                 </div>
                 <div class="project-details">
                     <div class="project-role">System Designer</div>
-                    <div class="project-period">48 Hours • 12-Person Team</div>
+                    <div class="project-period">48 Hours • 12-Person Team • Released on Steam</div>
                     <p class="project-description">
                         Rapid game development during Global Game Jam 2025, resulting in a Steam release. Designed and implemented core gameplay systems under extreme time constraints.
                     </p>
@@ -799,7 +753,7 @@
                     </ul>
                     <div class="project-links">
                         <a href="https://store.steampowered.com/app/3586570/Soaked_in_Sin/" class="project-link" target="_blank">
-                            🎮 View on Steam
+                            View on Steam →
                         </a>
                     </div>
                     <div class="project-tech">
@@ -816,48 +770,45 @@
     <section class="tools-showcase" id="tools">
         <div class="tools-container">
             <div class="tools-header">
-                <h3>Production Tool <span class="highlight">Project</span></h3>
+                <h3>Production Tool Project</h3>
                 <p class="tools-description">
-                    Developed a comprehensive Excel-based production toolkit for game teams, demonstrating deep understanding of production workflows and data-driven project management.
+                    Developed a comprehensive Excel-based production toolkit for game teams, demonstrating deep understanding of production workflows and data-driven project management. Created as a research project based on industry-standard workflows.
                 </p>
             </div>
 
-            <div class="tools-grid">
-                <div class="tool-item">
-                    <div class="tool-icon">📊</div>
-                    <h4>Gantt Charts</h4>
-                    <p>Visual timeline planning for complex game development schedules</p>
+            <div class="excel-showcase-grid">
+                <div class="excel-card">
+                    <h4>Scope Breakdown & Estimation</h4>
+                    <p>Comprehensive feature tracking with status monitoring, stage progression, and man-day estimation across all disciplines (Art, Programming, Design)</p>
                 </div>
-                <div class="tool-item">
-                    <div class="tool-icon">📉</div>
-                    <h4>Burndown Charts</h4>
-                    <p>Sprint progress tracking with automated velocity calculations</p>
+                <div class="excel-card">
+                    <h4>Gantt Chart Visualization</h4>
+                    <p>Timeline management with dependency tracking, milestone markers, and automatic date calculations for efficient sprint planning</p>
                 </div>
-                <div class="tool-item">
-                    <div class="tool-icon">🔗</div>
-                    <h4>Dependency Maps</h4>
-                    <p>Critical path identification and blocker prevention systems</p>
-                </div>
-                <div class="tool-item">
-                    <div class="tool-icon">👥</div>
-                    <h4>Team Overview</h4>
-                    <p>Resource allocation and workload distribution dashboards</p>
-                </div>
-                <div class="tool-item">
-                    <div class="tool-icon">🎯</div>
-                    <h4>Scope Breakdown</h4>
-                    <p>Feature prioritization and milestone tracking systems</p>
-                </div>
-                <div class="tool-item">
-                    <div class="tool-icon">⚡</div>
-                    <h4>Automated Entry</h4>
-                    <p>Streamlined data input reducing manual work by significant margins</p>
+                <div class="excel-card">
+                    <h4>Team Resource Management</h4>
+                    <p>Workload distribution dashboards with capacity planning, skill allocation, and automated burndown chart generation</p>
                 </div>
             </div>
 
-            <p style="margin-top: 2rem; color: var(--text-light); font-style: italic;">
-                Created as a research project demonstrating production tool innovation • Based on Monster Hunter World: Iceborne update workflow
-            </p>
+            <div class="excel-visuals">
+                <div class="excel-visual">
+                    <div class="excel-visual-placeholder">Scope Breakdown View</div>
+                    <p>Feature Status & Progress Tracking</p>
+                </div>
+                <div class="excel-visual">
+                    <div class="excel-visual-placeholder">Gantt Chart</div>
+                    <p>Timeline & Dependencies</p>
+                </div>
+                <div class="excel-visual">
+                    <div class="excel-visual-placeholder">Team Overview</div>
+                    <p>Resource Allocation</p>
+                </div>
+                <div class="excel-visual">
+                    <div class="excel-visual-placeholder">Burndown Chart</div>
+                    <p>Sprint Velocity Tracking</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -871,125 +822,38 @@
 
             <div class="skills-grid">
                 <div class="skill-category">
-                    <h3><span class="icon">🛠️</span> Production Tools</h3>
+                    <h3>Production Tools</h3>
                     <ul class="skill-list">
-                        <li class="skill-item">
-                            <span class="skill-name">
-                                <span class="skill-icon">📋</span>
-                                GitHub Projects
-                            </span>
-                            <span class="skill-level">Expert</span>
-                        </li>
-                        <li class="skill-item">
-                            <span class="skill-name">
-                                <span class="skill-icon">🎯</span>
-                                Codecks
-                            </span>
-                            <span class="skill-level">Advanced</span>
-                        </li>
-                        <li class="skill-item">
-                            <span class="skill-name">
-                                <span class="skill-icon">📌</span>
-                                Trello
-                            </span>
-                            <span class="skill-level">Expert</span>
-                        </li>
-                        <li class="skill-item">
-                            <span class="skill-name">
-                                <span class="skill-icon">📊</span>
-                                Excel / Data Analysis
-                            </span>
-                            <span class="skill-level">Expert</span>
-                        </li>
-                        <li class="skill-item">
-                            <span class="skill-name">
-                                <span class="skill-icon">🔀</span>
-                                Perforce
-                            </span>
-                            <span class="skill-level">Intermediate</span>
-                        </li>
-                        <li class="skill-item">
-                            <span class="skill-name">
-                                <span class="skill-icon">🗺️</span>
-                                Miro
-                            </span>
-                            <span class="skill-level">Intermediate</span>
-                        </li>
+                        <li class="skill-item">Perforce</li>
+                        <li class="skill-item">Codecks</li>
+                        <li class="skill-item">Jira</li>
+                        <li class="skill-item">Trello</li>
+                        <li class="skill-item">Excel</li>
+                        <li class="skill-item">GitHub Projects</li>
+                        <li class="skill-item">Miro</li>
                     </ul>
                 </div>
 
                 <div class="skill-category">
-                    <h3><span class="icon">🎮</span> Methodologies</h3>
+                    <h3>Production Skills</h3>
                     <ul class="skill-list">
-                        <li class="skill-item">
-                            <span class="skill-name">
-                                <span class="skill-icon">🔄</span>
-                                AGILE/SCRUM
-                            </span>
-                            <span class="skill-level">Advanced</span>
-                        </li>
-                        <li class="skill-item">
-                            <span class="skill-name">
-                                <span class="skill-icon">📈</span>
-                                Sprint Planning
-                            </span>
-                            <span class="skill-level">Advanced</span>
-                        </li>
-                        <li class="skill-item">
-                            <span class="skill-name">
-                                <span class="skill-icon">⚠️</span>
-                                Risk Management
-                            </span>
-                            <span class="skill-level">Intermediate</span>
-                        </li>
-                        <li class="skill-item">
-                            <span class="skill-name">
-                                <span class="skill-icon">🤝</span>
-                                Stakeholder Management
-                            </span>
-                            <span class="skill-level">Intermediate</span>
-                        </li>
+                        <li class="skill-item">AGILE/SCRUM</li>
+                        <li class="skill-item">Sprint Planning</li>
+                        <li class="skill-item">Risk Management</li>
+                        <li class="skill-item">Stakeholder Management</li>
+                        <li class="skill-item">Team Coordination</li>
+                        <li class="skill-item">Process Optimization</li>
                     </ul>
                 </div>
 
                 <div class="skill-category">
-                    <h3><span class="icon">🌐</span> Technical & Languages</h3>
+                    <h3>Technical</h3>
                     <ul class="skill-list">
-                        <li class="skill-item">
-                            <span class="skill-name">
-                                <span class="skill-icon">🎮</span>
-                                Unreal Engine 5
-                            </span>
-                            <span class="skill-level">Basic</span>
-                        </li>
-                        <li class="skill-item">
-                            <span class="skill-name">
-                                <span class="skill-icon">⚙️</span>
-                                System Design
-                            </span>
-                            <span class="skill-level">Intermediate</span>
-                        </li>
-                        <li class="skill-item">
-                            <span class="skill-name">
-                                <span class="skill-icon">📄</span>
-                                Documentation
-                            </span>
-                            <span class="skill-level">Advanced</span>
-                        </li>
-                        <li class="skill-item">
-                            <span class="skill-name">
-                                <span class="skill-icon">🇬🇧</span>
-                                English
-                            </span>
-                            <span class="skill-level">Fluent</span>
-                        </li>
-                        <li class="skill-item">
-                            <span class="skill-name">
-                                <span class="skill-icon">🇧🇬</span>
-                                Bulgarian
-                            </span>
-                            <span class="skill-level">Native</span>
-                        </li>
+                        <li class="skill-item">Unreal Engine 5</li>
+                        <li class="skill-item">System Design</li>
+                        <li class="skill-item">Level Design</li>
+                        <li class="skill-item">Documentation</li>
+                        <li class="skill-item">Data Analysis</li>
                     </ul>
                 </div>
             </div>
@@ -1016,18 +880,17 @@
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
-        <h3>Let's Create Something Amazing Together</h3>
-        <p>Looking for a producer who can bridge the gap between creative vision and technical execution?</p>
+        <h3>Contact</h3>
         
         <div class="contact-buttons">
-            <a href="mailto:veither546@gmail.com" class="btn btn-primary">Send Email</a>
-            <a href="https://hristoradev.squarespace.com/" class="btn btn-secondary" style="background: white; color: var(--primary-dark); border-color: white;">Download Resume</a>
+            <a href="https://www.linkedin.com/in/hristo-radev" target="_blank" class="btn btn-primary">LinkedIn Profile</a>
+            <a href="#" class="btn btn-secondary" style="background: white; color: var(--primary-dark); border-color: white;">Download Resume</a>
         </div>
 
         <div class="contact-info">
-            <a href="mailto:veither546@gmail.com">📧 veither546@gmail.com</a>
-            <a href="tel:+31623807168">📱 +31 6 2380 7168</a>
-            <a href="#">📍 Breda, Netherlands</a>
+            <a href="https://www.linkedin.com/in/hristo-radev" target="_blank">LinkedIn</a>
+            <span style="color: white; opacity: 0.9;">•</span>
+            <span style="color: white; opacity: 0.9;">Breda, Netherlands</span>
         </div>
     </section>
 

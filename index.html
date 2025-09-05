@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hristo Radev | Game Producer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #2c2c2c;
+            --primary-earth: #A47864;
+            --accent-coral: #FF6B6B;
+            --accent-teal: #4ECDC4;
+            --light-gray: #f5f5f5;
+            --medium-gray: #e0e0e0;
+            --text-dark: #333;
+            --text-light: #666;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-hover: 0 8px 12px rgba(0,0,0,0.15);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            color: var(--primary-earth);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-coral);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 70px;
+            min-height: calc(100vh - 70px);
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 60%;
+            height: 150%;
+            background: linear-gradient(135deg, var(--primary-earth) 0%, transparent 70%);
+            opacity: 0.1;
+            transform: rotate(15deg);
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .hero-content h1 span {
+            background: linear-gradient(135deg, var(--primary-earth), var(--accent-coral));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-coral);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-coral), #ff5252);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--primary-dark);
+            border: 2px solid var(--medium-gray);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary-earth);
+            color: var(--primary-earth);
+        }
+
+        .hero-visual {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .hero-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-hover);
+            transform: translateX(20px);
+            animation: slideIn 0.8s ease forwards;
+        }
+
+        @keyframes slideIn {
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        .hero-card h3 {
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+
+        .skills-preview {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: var(--light-gray);
+            color: var(--text-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+
+        .skill-tag:hover {
+            background: var(--primary-earth);
+            color: white;
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-coral), var(--accent-teal));
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 5rem 2rem;
+            background: var(--white);
+        }
+
+        .projects-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .project-header {
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--primary-earth), var(--accent-coral));
+            color: white;
+            position: relative;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-type {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .project-header h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .project-details {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-role {
+            color: var(--primary-earth);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .project-period {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .project-achievements {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-achievements li {
+            padding: 0.5rem 0;
+            color: var(--text-dark);
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .project-achievements li::before {
+            content: '→';
+            color: var(--accent-teal);
+            font-weight: bold;
+            margin-right: 0.75rem;
+            font-size: 1.2rem;
+        }
+
+        .project-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .metric {
+            background: var(--light-gray);
+            padding: 0.75rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .metric-value {
+            display: block;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent-coral);
+        }
+
+        .metric-label {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            background: var(--primary-earth);
+            color: white;
+            padding: 0.4rem 0.9rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Excel Package Showcase */
+        .excel-showcase {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, var(--light-gray), white);
+        }
+
+        .excel-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .excel-content h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+
+        .excel-content .highlight {
+            color: var(--accent-coral);
+        }
+
+        .excel-description {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .excel-features {
+            list-style: none;
+            margin-bottom: 2rem;
+            text-align: left;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .excel-features li {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--medium-gray);
+            display: flex;
+            align-items: center;
+            color: var(--text-dark);
+        }
+
+        .excel-features li::before {
+            content: '✓';
+            color: var(--accent-teal);
+            font-weight: bold;
+            margin-right: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 2rem;
+            background: var(--white);
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-intro {
+            background: linear-gradient(135deg, var(--primary-earth), var(--accent-coral));
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-hover);
+        }
+
+        .about-intro h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-intro p {
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .about-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .meta-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .meta-text {
+            flex: 1;
+        }
+
+        .meta-label {
+            display: block;
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .meta-value {
+            font-weight: 600;
+        }
+
+        .skills-container {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .skill-category h4 {
+            color: var(--primary-dark);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-category-icon {
+            color: var(--accent-coral);
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, var(--primary-dark), #1a1a1a);
+            color: white;
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .contact-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+            max-width: 400px;
+            margin: 0 auto 2rem;
+        }
+
+        .contact-card:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-3px);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent-coral);
+        }
+
+        .contact-label {
+            display: block;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            opacity: 0.8;
+        }
+
+        .contact-value {
+            font-size: 1.1rem;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-value:hover {
+            color: var(--accent-coral);
+        }
+
+        .btn-contact {
+            background: linear-gradient(135deg, var(--accent-coral), #ff5252);
+            color: white;
+            padding: 1.2rem 3rem;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-contact:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--accent-coral);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-visual {
+                display: none;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#home" class="logo">Hristo Radev</a>
+            <ul class="nav-links">
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#tools">Tools</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Hi, I'm <span>Hristo Radev</span></h1>
+                <h2 style="font-size: 2rem; font-weight: 300; margin-bottom: 1rem;">Game Producer</h2>
+                <p class="subtitle">Transforming creative visions into shipped games through AGILE leadership, data-driven production, and innovative tool development</p>
+                
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">PC</div>
+                        <div class="stat-label">Platform</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">4</div>
+                        <div class="stat-label">Months</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">10-13</div>
+                        <div class="stat-label">Team Size</div>
+                    </div>
+                </div>
+
+                <div class="cta-group">
+                    <a href="#projects" class="btn btn-primary">View My Work →</a>
+                    <a href="https://www.linkedin.com/in/hristo-radev-bb9790317/" target="_blank" class="btn btn-secondary">LinkedIn Profile</a>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="hero-card">
+                    <h3>Core Expertise</h3>
+                    <div class="skills-preview">
+                        <span class="skill-tag">AGILE/SCRUM</span>
+                        <span class="skill-tag">GitHub Projects</span>
+                        <span class="skill-tag">Codecks</span>
+                        <span class="skill-tag">Sprint Planning</span>
+                        <span class="skill-tag">Risk Management</span>
+                        <span class="skill-tag">Team Leadership</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="section-header">
+            <h2>Featured Projects</h2>
+            <p>Leading cross-functional teams from concept to launch, scaling processes across diverse project contexts</p>
+        </div>
+
+        <div class="projects-grid">
+            <!-- Ascension Protocol -->
+            <div class="project-card">
+                <div class="project-header" style="background: linear-gradient(135deg, #667EEA, #764BA2);">
+                    <span class="project-type">Current Project • 10-Person Team</span>
+                    <h3>Ascension Protocol</h3>
+                </div>
+                <div class="project-details">
+                    <div class="project-role">Lead Producer</div>
+                    <div class="project-period">April - July 2025</div>
+                    <p class="project-description">
+                        Serving as vision holder and lead producer for a 10-person team developing an innovative gameplay experience. Managing the full production pipeline without dedicated artists, requiring creative resource allocation and external talent coordination.
+                    </p>
+                    <ul class="project-achievements">
+                        <li>Established dual-tool AGILE workflow using GitHub Projects and Codecks for optimal team visibility</li>
+                        <li>Coordinated with external artists to fill resource gaps while maintaining project timeline</li>
+                        <li>Led daily standups and sprint planning sessions, maintaining 100% sprint goal achievement</li>
+                        <li>Implemented dependency mapping to identify and prevent critical path blockers</li>
+                    </ul>
+                    <div class="project-metrics">
+                        <div class="metric">
+                            <span class="metric-value">⏱️ 4</span>
+                            <span class="metric-label">Months</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">👥 10</span>
+                            <span class="metric-label">Team Size</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">🔄 2-Week</span>
+                            <span class="metric-label">Sprints</span>
+                        </div>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">GitHub Projects</span>
+                        <span class="tech-tag">Codecks</span>
+                        <span class="tech-tag">AGILE</span>
+                        <span class="tech-tag">Stakeholder Mgmt</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Crow's Nest -->
+            <div class="project-card">
+                <div class="project-header" style="background: linear-gradient(135deg, #4ECDC4, #44A08D);">
+                    <span class="project-type">Shipped Game • 13-Person Team</span>
+                    <h3>Crow's Nest</h3>
+                </div>
+                <div class="project-details">
+                    <div class="project-role">Producer & System Designer</div>
+                    <div class="project-period">May - July 2024</div>
+                    <p class="project-description">
+                        Dual-role position combining production leadership with hands-on system design. Successfully shipped a complete game experience while managing cross-specialization communication across art, design, and programming disciplines.
+                    </p>
+                    <ul class="project-achievements">
+                        <li>Facilitated cross-discipline communication for 13-person team using SCRUM methodology</li>
+                        <li>Implemented Trello-based workflow with custom automation for progress tracking</li>
+                        <li>Balanced production responsibilities with system design contributions</li>
+                        <li>Delivered project on schedule with zero critical bugs at launch</li>
+                    </ul>
+                    <div class="project-metrics">
+                        <div class="metric">
+                            <span class="metric-value">👥 13</span>
+                            <span class="metric-label">Team Size</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">🎨 3</span>
+                            <span class="metric-label">Disciplines</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">⏱️ 3</span>
+                            <span class="metric-label">Months</span>
+                        </div>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Trello</span>
+                        <span class="tech-tag">SCRUM</span>
+                        <span class="tech-tag">System Design</span>
+                        <span class="tech-tag">Cross-Team Coord</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Soaked in Sin -->
+            <div class="project-card">
+                <div class="project-header" style="background: linear-gradient(135deg, #FF6B6B, #ff5252);">
+                    <span class="project-type">Game Jam • 48 Hours</span>
+                    <h3>Soaked in Sin</h3>
+                </div>
+                <div class="project-details">
+                    <div class="project-role">System Designer</div>
+                    <div class="project-period">Global Game Jam 2025</div>
+                    <p class="project-description">
+                        Rapid development during Global Game Jam 2025, designing and implementing one of three core game stages. Demonstrated ability to deliver under extreme time constraints while maintaining quality standards.
+                    </p>
+                    <ul class="project-achievements">
+                        <li>Designed and fully implemented 1 of 3 game stages in Unreal Engine 5</li>
+                        <li>Coordinated with 12-person team in high-pressure 48-hour development sprint</li>
+                        <li>Managed testing cycles and bug fixes for successful jam submission</li>
+                        <li>Applied rapid prototyping techniques to meet aggressive deadline</li>
+                    </ul>
+                    <div class="project-metrics">
+                        <div class="metric">
+                            <span class="metric-value">⏱️ 48</span>
+                            <span class="metric-label">Hours</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">👥 12</span>
+                            <span class="metric-label">Team Size</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">🎮 3</span>
+                            <span class="metric-label">Game Stages</span>
+                        </div>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Unreal Engine 5</span>
+                        <span class="tech-tag">Rapid Prototyping</span>
+                        <span class="tech-tag">System Design</span>
+                        <span class="tech-tag">QA Testing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Excel Package Showcase -->
+    <section id="tools" class="excel-showcase">
+        <div class="section-header">
+            <h2>Production Tools Innovation</h2>
+            <p>Developing scalable solutions for game production management</p>
+        </div>
+
+        <div class="excel-container">
+            <div class="excel-content">
+                <h3>Game Production <span class="highlight">Excel Package</span></h3>
+                <p class="excel-description">
+                    Created a comprehensive production management toolkit during a 3-month research project. This suite of interconnected Excel tools automates critical production workflows, reducing planning overhead by 40% and improving tracking accuracy.
+                </p>
+                <ul class="excel-features">
+                    <li>Automated Gantt Chart with critical path visualization</li>
+                    <li>Dynamic Burndown Chart with velocity tracking</li>
+                    <li>Team Overview dashboard with skill mapping</li>
+                    <li>Scope Breakdown structure with priority weighting</li>
+                    <li>Dependency Map for identifying blockers</li>
+                    <li>Automated Data Entry system reducing manual work by 3+ hours weekly</li>
+                </ul>
+                <div class="cta-group" style="justify-content: center;">
+                    <a href="https://www.linkedin.com/in/hristo-radev-bb9790317/" target="_blank" class="btn btn-primary">Connect on LinkedIn →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="section-header">
+            <h2>About Me</h2>
+            <p>Combining technical understanding with production excellence</p>
+        </div>
+
+        <div class="about-container">
+            <div class="about-intro">
+                <h3>Production Philosophy</h3>
+                <p>
+                    I believe great games come from empowered teams with clear communication and efficient processes. My approach combines AGILE methodologies with data-driven decision making, ensuring teams can focus on creativity while maintaining predictable delivery.
+                </p>
+                <p>
+                    Currently in my third year at Breda University of Applied Sciences, I've fully pivoted to production after starting with a system design focus. This technical foundation allows me to bridge the gap between creative vision and technical implementation.
+                </p>
+                <div class="about-meta">
+                    <div class="meta-item">
+                        <div class="meta-icon">🎓</div>
+                        <div class="meta-text">
+                            <span class="meta-label">Education</span>
+                            <span class="meta-value">BUas Games - Design & Production</span>
+                        </div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-icon">📍</div>
+                        <div class="meta-text">
+                            <span class="meta-label">Location</span>
+                            <span class="meta-value">Breda, Netherlands</span>
+                        </div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-icon">🚀</div>
+                        <div class="meta-text">
+                            <span class="meta-label">Focus</span>
+                            <span class="meta-value">Seeking Internship 2025</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h4><span class="skill-category-icon">🛠️</span> Production Tools</h4>
+                    <div class="skill-list">
+                        <span class="skill-tag">GitHub Projects</span>
+                        <span class="skill-tag">Codecks</span>
+                        <span class="skill-tag">Trello</span>
+                        <span class="skill-tag">Excel/Data Analysis</span>
+                        <span class="skill-tag">Perforce</span>
+                        <span class="skill-tag">Miro</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h4><span class="skill-category-icon">📋</span> Methodologies</h4>
+                    <div class="skill-list">
+                        <span class="skill-tag">AGILE/SCRUM</span>
+                        <span class="skill-tag">Sprint Planning</span>
+                        <span class="skill-tag">Risk Management</span>
+                        <span class="skill-tag">Stakeholder Management</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h4><span class="skill-category-icon">💡</span> Technical Skills</h4>
+                    <div class="skill-list">
+                        <span class="skill-tag">System Design</span>
+                        <span class="skill-tag">Documentation</span>
+                        <span class="skill-tag">Unreal Engine 5</span>
+                        <span class="skill-tag">Data Analysis</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="contact-container">
+            <h2>Contact</h2>
+            <p class="contact-subtitle">Looking for internship opportunities to bring my production expertise to your team</p>
+            
+            <div class="contact-card">
+                <div class="contact-icon">💼</div>
+                <span class="contact-label">Professional Network</span>
+                <a href="https://www.linkedin.com/in/hristo-radev-bb9790317/" target="_blank" class="contact-value">LinkedIn Profile</a>
+            </div>
+
+            <a href="https://www.linkedin.com/in/hristo-radev-bb9790317/" target="_blank" class="btn-contact">
+                Connect on LinkedIn →
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/hristo-radev-bb9790317/" target="_blank">💼 LinkedIn</a>
+            </div>
+            <p>&copy; 2025 Hristo Radev. All rights reserved.</p>
+            <p style="margin-top: 0.5rem; opacity: 0.8; font-size: 0.9rem;">
+                Currently seeking internship opportunities for 2025
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crow's Nest - Hristo Radev</title>
+    <style>
+        :root {
+            --primary-earth: #006989;
+            --primary-dark: #2c2c2c;
+            --accent-coral: #9D79BC;
+            --text-dark: #333;
+            --text-light: #666;
+            --light-gray: #f5f5f5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: #f7fafc;
+        }
+
+        nav {
+            background: white;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1a202c;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #4a5568;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-coral);
+        }
+
+        .project-hero {
+            background: linear-gradient(135deg, #2c5f7c 0%, #1a3a4d 100%);
+            color: white;
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .project-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .project-subtitle {
+            font-size: 1.5rem;
+            color: #e2e8f0;
+            margin-bottom: 2rem;
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .meta-item {
+            text-align: center;
+        }
+
+        .meta-label {
+            font-size: 0.875rem;
+            color: #cbd5e0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .meta-value {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #1a202c;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .content-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .content-card h3 {
+            font-size: 1.5rem;
+            color: #2d3748;
+            margin-bottom: 1rem;
+        }
+
+        .content-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .content-card li {
+            padding: 0.75rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .content-card li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--accent-coral);
+            font-weight: bold;
+        }
+
+        .dual-role-highlight {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid #f59e0b;
+            margin: 2rem 0;
+        }
+
+        .dual-role-highlight h3 {
+            color: #92400e;
+            margin-bottom: 1rem;
+        }
+
+        .challenge-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 6px;
+        }
+
+        .challenge-box h4 {
+            color: #856404;
+            margin-bottom: 0.5rem;
+        }
+
+        .solution-box {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 6px;
+        }
+
+        .solution-box h4 {
+            color: #155724;
+            margin-bottom: 0.5rem;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .result-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .result-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent-coral);
+            margin-bottom: 0.5rem;
+        }
+
+        .result-label {
+            font-size: 1rem;
+            color: #4a5568;
+            font-weight: 600;
+        }
+
+        .cta-section {
+            background: #1a202c;
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--accent-coral);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #8a6aa8;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #1a202c;
+        }
+
+        @media (max-width: 768px) {
+            .project-hero h1 {
+                font-size: 2.5rem;
+            }
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.875rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <a href="index.html" class="nav-logo">Hristo Radev</a>
+            <ul class="nav-links">
+                <li><a href="projects.html">All Projects</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="project-hero">
+        <h1>Crow's Nest</h1>
+        <p class="project-subtitle">Producer & Systems Designer | Unreal Engine 5</p>
+        
+        <div class="project-meta">
+            <div class="meta-item">
+                <div class="meta-label">Role</div>
+                <div class="meta-value">Producer & Systems Designer</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Team Size</div>
+                <div class="meta-value">13 People</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Duration</div>
+                <div class="meta-value">10 Weeks</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Engine</div>
+                <div class="meta-value">Unreal Engine 5</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2 class="section-title">Project Overview</h2>
+        
+        <div class="dual-role-highlight">
+            <h3>🎯 Dual-Role Position</h3>
+            <p>
+                Crow's Nest presented a unique challenge: balancing production leadership responsibilities with hands-on systems design contributions. This dual-role position required not only coordinating a 13-person cross-disciplinary team but also contributing directly to game design while demonstrating how technical understanding enhances production capabilities.
+            </p>
+        </div>
+
+        <div class="content-grid">
+            <div class="content-card">
+                <h3>The Challenge</h3>
+                <p>
+                    Leading production for a 13-person team developing a cooperative ship management game in Unreal Engine 5. The project required coordinating across art, design, and programming disciplines while managing a complex asset pipeline and ensuring milestone deliveries remained on schedule.
+                </p>
+            </div>
+            <div class="content-card">
+                <h3>Production Responsibilities</h3>
+                <ul>
+                    <li>Managed complex UE5 asset pipeline across departments</li>
+                    <li>Implemented Perforce version control with custom workflows</li>
+                    <li>Coordinated daily standups for 13 members</li>
+                    <li>Facilitated cross-specialization communication</li>
+                    <li>Tracked risks and dependencies through sprint cycles</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" style="background: white;">
+        <h2 class="section-title">Design Contributions</h2>
+        <div class="content-grid">
+            <div class="content-card">
+                <h3>Ship 3Cs & Controls</h3>
+                <p>
+                    Created and iterated on the ship's core movement and control systems. Led multiple playtest sessions and implemented feedback to refine ship navigation, working closely with programmers to balance responsiveness with cooperative gameplay focus.
+                </p>
+                <p style="margin-top: 1rem; padding: 1rem; background: #f0f9ff; border-radius: 6px;">
+                    <strong>Production Insight:</strong> Owning the 3Cs design gave direct insight into technical constraints, enabling better production planning and more accurate sprint estimates for gameplay features.
+                </p>
+            </div>
+            <div class="content-card">
+                <h3>Systems Documentation</h3>
+                <ul>
+                    <li>Created comprehensive system design documentation for core mechanics</li>
+                    <li>Developed feature specifications used by programming team</li>
+                    <li>Designed feedback systems for ship damage and player actions</li>
+                    <li>Prototyped station interactions and cooperative gameplay loops</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2 class="section-title">Production Challenges & Solutions</h2>
+        
+        <div class="challenge-box">
+            <h4>Challenge: Initial Pitch Rejection & Morale Recovery</h4>
+            <p>The team's initial pitch was declined after two days of passionate work, leading to significant morale drop and uncertainty about how to proceed.</p>
+        </div>
+        <div class="solution-box">
+            <h4>Solution</h4>
+            <p>Maintained team confidence through structured recovery. Facilitated guided concepting sessions to iterate on the design, incorporated stakeholder feedback constructively, and successfully re-pitched within the same week. This taught the team resilience and the importance of iteration.</p>
+        </div>
+
+        <div class="challenge-box">
+            <h4>Challenge: Balancing Producer and Designer Responsibilities</h4>
+            <p>Early in the project, took on too much production lead role while neglecting growth as a designer, as identified through mentor feedback.</p>
+        </div>
+        <div class="solution-box">
+            <h4>Solution</h4>
+            <p>After mentor feedback, consciously stepped back from some production meetings to focus on design work. Structured time to ensure both production coordination and design contributions received proper attention, ultimately making me more effective in both roles.</p>
+        </div>
+
+        <div class="challenge-box">
+            <h4>Challenge: Complex Asset Pipeline Management</h4>
+            <p>Coordinating asset delivery and integration across 13 team members in Unreal Engine 5 with Perforce required careful dependency tracking and conflict prevention.</p>
+        </div>
+        <div class="solution-box">
+            <h4>Solution</h4>
+            <p>Implemented custom Perforce workflows tailored to team structure. Created clear documentation for asset submission and review processes. Established "integration windows" where artists and programmers coordinated asset handoffs, significantly reducing merge conflicts.</p>
+        </div>
+    </section>
+
+    <section class="content-section" style="background: white;">
+        <h2 class="section-title">Production Skills Demonstrated</h2>
+        <div class="content-grid">
+            <div class="content-card">
+                <h3>Producer Skills</h3>
+                <ul>
+                    <li>Project Management - Sprint planning and milestone tracking</li>
+                    <li>Leadership & Communication - Daily standups and team coordination</li>
+                    <li>Cross-discipline Coordination - Art, design, and programming alignment</li>
+                    <li>Risk Management - Dependency mapping and blocker removal</li>
+                </ul>
+            </div>
+            <div class="content-card">
+                <h3>Designer Skills</h3>
+                <ul>
+                    <li>3Cs Design - Ship movement and control systems</li>
+                    <li>System Design - Core gameplay mechanics documentation</li>
+                    <li>Prototyping - Iterative design based on playtest feedback</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2 class="section-title">Tools & Methodologies</h2>
+        <div class="content-grid">
+            <div class="content-card">
+                <h3>Production Tools</h3>
+                <ul>
+                    <li><strong>Perforce:</strong> Version control for large UE5 assets</li>
+                    <li><strong>Codecks:</strong> Sprint planning and task tracking</li>
+                    <li><strong>Dependency Mapping:</strong> Risk management and bottleneck prevention</li>
+                </ul>
+            </div>
+            <div class="content-card">
+                <h3>Methodologies</h3>
+                <ul>
+                    <li><strong>SCRUM:</strong> Sprint cycles with daily standups</li>
+                    <li><strong>Retrospectives:</strong> Continuous process improvement</li>
+                    <li><strong>Feature Freeze:</strong> Scope management under pressure</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" style="background: white;">
+        <h2 class="section-title">Project Results</h2>
+        <div class="results-grid">
+            <div class="result-card">
+                <div class="result-number">95%</div>
+                <div class="result-label">Sprint Task Completion Rate</div>
+            </div>
+            <div class="result-card">
+                <div class="result-number">13</div>
+                <div class="result-label">Team Members Coordinated</div>
+            </div>
+            <div class="result-card">
+                <div class="result-number">0</div>
+                <div class="result-label">Critical Milestone Delays</div>
+            </div>
+            <div class="result-card">
+                <div class="result-number">100%</div>
+                <div class="result-label">Major Features Delivered</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2 class="section-title">Key Learnings & Growth</h2>
+        <div class="content-card">
+            <ul>
+                <li><strong>Resilience in Production:</strong> Learned that setbacks like pitch rejections are opportunities for improvement. The ability to recover and rally the team is as important as initial planning.</li>
+                <li><strong>Dual-Role Benefits:</strong> Understanding both production and design perspectives made me more effective at both. Technical knowledge directly improved production planning accuracy.</li>
+                <li><strong>Prioritization Under Pressure:</strong> Developed the critical skill of knowing when to close feature development and focus on polish.</li>
+                <li><strong>Dependency Visualization:</strong> Creating dependency maps transformed abstract risks into concrete, visible blockers the entire team could understand.</li>
+                <li><strong>Team Atmosphere Matters:</strong> Building an environment where team members felt appreciated significantly improved productivity and morale.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Want to see more?</h2>
+        <p style="font-size: 1.25rem; color: #e2e8f0; max-width: 600px; margin: 0 auto;">
+            Explore other projects or get in touch
+        </p>
+        <div class="cta-buttons">
+            <a href="soaked-in-sin.html" class="btn btn-primary">Next Project: Soaked in Sin →</a>
+            <a href="projects.html" class="btn btn-secondary">All Projects</a>
+            <a href="index.html#contact" class="btn btn-secondary">Contact Me</a>
+        </div>
+    </section>
+</body>
+</html>

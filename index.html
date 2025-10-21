@@ -229,6 +229,9 @@
             overflow: hidden;
             box-shadow: 0 5px 20px rgba(0,0,0,0.08);
             transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .project-card:hover {
@@ -259,7 +262,7 @@
 
         .platform-badge {
             display: inline-block;
-            background: var(--accent-coral);
+            background: var(--primary-earth);
             color: white;
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
@@ -286,6 +289,9 @@
 
         .project-details {
             padding: 0 1.5rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
 
         .project-role {
@@ -380,7 +386,14 @@
             font-size: 0.75rem;
             font-weight: 500;
         }
-
+        
+        .project-actions {
+            display: flex;
+            gap: 1rem;
+            padding: 0 1.5rem 1.5rem;
+            margin-top: auto;
+        }
+        
         /* Excel Package Section - ENHANCED WITH LIGHTBOX */
         .excel-package {
             padding: 5rem 2rem;
@@ -727,7 +740,7 @@
             </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#projects">Projects</a></li>
+                <li><a href="projects.html">Projects</a></li>
                 <li><a href="#excel">Tools</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -802,7 +815,11 @@
                         <span class="tech-tag">AGILE</span>
                     </div>
                 </div>
+                <div class="project-actions">
+                    <a href="ascension-protocol.html" class="btn btn-primary">View Project Details</a>
+                </div>
             </div>
+
 
             <!-- Crow's Nest -->
             <div class="project-card">
@@ -835,7 +852,10 @@
                         <span class="tech-tag">Unreal Engine 5</span>
                         <span class="tech-tag">SCRUM</span>
                         <span class="tech-tag">Team Coordination</span>
-                    </div>
+                       </div>
+                </div>
+                <div class="project-actions">
+                    <a href="crows-nest.html" class="btn btn-primary">View Project Details</a>
                 </div>
             </div>
 
@@ -850,10 +870,10 @@
                     <h3>Soaked in Sin</h3>
                 </div>
                 <div class="project-details">
-                    <div class="project-role">Producer & Systems Designer</div>
+                    <div class="project-role">Gameplay & Systems Designer</div>
                     <div class="project-period">Global Game Jam 2024 (48 hours)</div>
                     <p class="project-description">
-                        High-pressure production challenge managing a 12-person team during a 48-hour game jam. Successfully launched on Steam post-jam, demonstrating ability to deliver under extreme time constraints.
+                        High-pressure production challenge working within a 12-person team during a 48-hour game jam. Successfully launched on Steam post-jam, demonstrating ability to deliver under extreme time constraints.
                     </p>
                     <ul class="project-achievements">
                         <li>Designed core systems and mechanics within first 6 hours</li>
@@ -871,6 +891,9 @@
                         <span class="tech-tag">Rapid Iteration</span>
                         <span class="tech-tag">Crisis Management</span>
                     </div>
+                </div>
+                <div class="project-actions">
+                    <a href="soaked-in-sin.html" class="btn btn-primary">View Project Details</a>
                 </div>
             </div>
         </div>

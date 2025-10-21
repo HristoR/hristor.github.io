@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[PROJECT NAME] - Hristo Radev</title>
+    <style>
+        :root {
+            --primary-earth: #006989;
+            --primary-dark: #2c2c2c;
+            --accent-coral: #9D79BC;
+            --accent-teal: #4ECDC4;
+            --text-dark: #333;
+            --text-light: #666;
+            --light-gray: #f5f5f5;
+            --shadow-hover: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: #f7fafc;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1a202c;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #4a5568;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-coral);
+        }
+
+        /* Hero Section */
+        .project-hero {
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+            color: white;
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .project-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .project-subtitle {
+            font-size: 1.5rem;
+            color: #e2e8f0;
+            margin-bottom: 2rem;
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .meta-item {
+            text-align: center;
+        }
+
+        .meta-label {
+            font-size: 0.875rem;
+            color: #cbd5e0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .meta-value {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        /* Content Sections */
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #1a202c;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .content-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .content-card h3 {
+            font-size: 1.5rem;
+            color: #2d3748;
+            margin-bottom: 1rem;
+        }
+
+        .content-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .content-card li {
+            padding: 0.75rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .content-card li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--accent-coral);
+            font-weight: bold;
+        }
+
+        /* Results Grid */
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .result-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .result-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent-coral);
+            margin-bottom: 0.5rem;
+        }
+
+        .result-label {
+            font-size: 1rem;
+            color: #4a5568;
+            font-weight: 600;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: #1a202c;
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--accent-coral);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #8a6aa8;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #1a202c;
+        }
+
+        /* Template Instructions - Remove these styles after filling content */
+        .template-instruction {
+            background: #fef3c7;
+            border: 2px dashed #f59e0b;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 6px;
+            color: #92400e;
+        }
+
+        .template-instruction strong {
+            color: #92400e;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .project-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <a href="index.html" class="nav-logo">Hristo Radev</a>
+            <ul class="nav-links">
+                <li><a href="projects.html">All Projects</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="project-hero">
+        <div class="template-instruction">
+            <strong>FILL IN:</strong>
+            - Project Name in h1<br>
+            - Your Role | Engine Used in subtitle<br>
+            - Meta values: Role, Team Size, Duration, Engine
+        </div>
+        <h1>[PROJECT NAME]</h1>
+        <p class="project-subtitle">[Your Role] | [Engine Name]</p>
+        
+        <div class="project-meta">
+            <div class="meta-item">
+                <div class="meta-label">Role</div>
+                <div class="meta-value">[Lead Producer/Producer/etc.]</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Team Size</div>
+                <div class="meta-value">[X People]</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Duration</div>
+                <div class="meta-value">[X Weeks/Months]</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Engine</div>
+                <div class="meta-value">[Engine Name]</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Overview -->
+    <section class="content-section">
+        <h2 class="section-title">Project Overview</h2>
+        <div class="template-instruction">
+            <strong>WHAT SENIOR PRODUCERS WANT TO SEE:</strong>
+            - The Challenge: What production obstacles did the team face? (coordination issues, technical constraints, resource limitations)<br>
+            - Your Role: Specific production responsibilities (not just title). What did YOU actually do?<br>
+            - Be specific: Use names of tools (GitHub Projects, Codecks, Perforce), methodologies (AGILE, SCRUM), and concrete actions
+        </div>
+        
+        <div class="content-grid">
+            <div class="content-card">
+                <h3>The Challenge</h3>
+                <p>
+                    [Describe the production challenge: What made this project difficult from a production standpoint? Examples: coordinating X-person team across disciplines, working with custom engine constraints, managing without dedicated artists, tight deadlines, scope changes, etc.]
+                </p>
+            </div>
+            <div class="content-card">
+                <h3>My Production Role</h3>
+                <ul>
+                    <li>[Specific responsibility #1 - e.g., "Established dual-tool workflow using GitHub Projects and Codecks"]</li>
+                    <li>[Specific responsibility #2 - e.g., "Led daily 15-minute standups for X team members"]</li>
+                    <li>[Specific responsibility #3 - e.g., "Managed Perforce version control workflows"]</li>
+                    <li>[Add more specific actions you took]</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Production Achievements -->
+    <section class="content-section" style="background: white;">
+        <h2 class="section-title">Key Production Achievements</h2>
+        <div class="template-instruction">
+            <strong>WHAT TO INCLUDE:</strong>
+            - Workflow innovations: New processes you implemented<br>
+            - Team coordination: How you kept the team aligned<br>
+            - Problem-solving: Specific blockers you removed<br>
+            - Tools/methodologies you used effectively
+        </div>
+        
+        <div class="content-grid">
+            <div class="content-card">
+                <h3>[Achievement Category 1 - e.g., "Workflow Innovation"]</h3>
+                <ul>
+                    <li>[Specific achievement with details]</li>
+                    <li>[Another achievement]</li>
+                    <li>[Another achievement]</li>
+                </ul>
+            </div>
+            <div class="content-card">
+                <h3>[Achievement Category 2 - e.g., "Team Coordination"]</h3>
+                <ul>
+                    <li>[Specific achievement]</li>
+                    <li>[Specific achievement]</li>
+                    <li>[Specific achievement]</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Production Skills Demonstrated -->
+    <section class="content-section">
+        <h2 class="section-title">Production Skills Demonstrated</h2>
+        <div class="template-instruction">
+            <strong>RECRUITERS LOOK FOR:</strong>
+            Based on Lasse's portfolio, list specific skills like:<br>
+            - Project Management<br>
+            - Leadership & Communication<br>
+            - Cross-discipline Coordination<br>
+            - Risk Management<br>
+            - Sprint Planning<br>
+            - Team Scaling<br>
+            - Marketing & Release Strategy
+        </div>
+        
+        <div class="content-grid">
+            <div class="content-card">
+                <h3>Producer Skills</h3>
+                <ul>
+                    <li>[Skill #1: e.g., "Project Management - Sprint planning and backlog management for X-person team"]</li>
+                    <li>[Skill #2: e.g., "Leadership & Communication - Daily standups and stakeholder updates"]</li>
+                    <li>[Skill #3]</li>
+                </ul>
+            </div>
+            <div class="content-card">
+                <h3>Designer Skills (if applicable)</h3>
+                <ul>
+                    <li>[If you did design work, list it here: e.g., "3Cs Design", "System Design", "Level Design"]</li>
+                    <li>[Be specific about what you designed]</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools & Methodologies -->
+    <section class="content-section" style="background: white;">
+        <h2 class="section-title">Tools & Methodologies Used</h2>
+        <div class="template-instruction">
+            <strong>LIST SPECIFIC TOOLS:</strong>
+            Examples: GitHub Projects, Codecks, Perforce, Trello, Jira, Excel, Miro, Discord<br>
+            Methodologies: AGILE, SCRUM, Kanban, Risk Management frameworks
+        </div>
+        
+        <div class="content-grid">
+            <div class="content-card">
+                <h3>Production Tools</h3>
+                <ul>
+                    <li><strong>[Tool Name]:</strong> [How you used it]</li>
+                    <li><strong>[Tool Name]:</strong> [How you used it]</li>
+                    <li><strong>[Tool Name]:</strong> [How you used it]</li>
+                </ul>
+            </div>
+            <div class="content-card">
+                <h3>Methodologies</h3>
+                <ul>
+                    <li><strong>[Methodology]:</strong> [How you applied it]</li>
+                    <li><strong>[Methodology]:</strong> [How you applied it]</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Results -->
+    <section class="content-section">
+        <h2 class="section-title">Project Results</h2>
+        <div class="template-instruction">
+            <strong>QUANTIFY YOUR IMPACT:</strong>
+            Use numbers that show production effectiveness:<br>
+            - Sprint completion rate (e.g., "95%")<br>
+            - Milestone delays (e.g., "0 critical delays")<br>
+            - Team size coordinated<br>
+            - Features delivered (e.g., "100% of planned features")<br>
+            - Time to completion
+        </div>
+        
+        <div class="results-grid">
+            <div class="result-card">
+                <div class="result-number">[X%]</div>
+                <div class="result-label">[Metric Label]</div>
+            </div>
+            <div class="result-card">
+                <div class="result-number">[X]</div>
+                <div class="result-label">[Metric Label]</div>
+            </div>
+            <div class="result-card">
+                <div class="result-number">[X]</div>
+                <div class="result-label">[Metric Label]</div>
+            </div>
+            <div class="result-card">
+                <div class="result-number">[X]</div>
+                <div class="result-label">[Metric Label]</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Learnings -->
+    <section class="content-section" style="background: white;">
+        <h2 class="section-title">Key Learnings & Growth</h2>
+        <div class="template-instruction">
+            <strong>SHOW GROWTH:</strong>
+            Reflect on what you learned as a producer:<br>
+            - Production skills developed<br>
+            - Mistakes made and lessons learned<br>
+            - What you'd do differently<br>
+            - How this prepares you for future projects
+        </div>
+        
+        <div class="content-card">
+            <ul>
+                <li><strong>[Learning #1]:</strong> [Description of what you learned and why it matters]</li>
+                <li><strong>[Learning #2]:</strong> [Description]</li>
+                <li><strong>[Learning #3]:</strong> [Description]</li>
+                <li><strong>[Learning #4]:</strong> [Description]</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Interested in this project?</h2>
+        <p style="font-size: 1.25rem; color: #e2e8f0; max-width: 600px; margin: 0 auto;">
+            [Optional: Add project-specific CTA text]
+        </p>
+        <div class="cta-buttons">
+            <a href="[TRAILER_LINK]" class="btn btn-primary" target="_blank">Watch Trailer</a>
+            <a href="[NEXT_PROJECT].html" class="btn btn-secondary">Next Project: [NAME] →</a>
+            <a href="projects.html" class="btn btn-secondary">All Projects</a>
+        </div>
+    </section>
+</body>
+</html>

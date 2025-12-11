@@ -96,18 +96,69 @@
         }
         /* Hero Section - PRESERVED AS PER INSTRUCTIONS */
         .hero {
+            position: relative;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 80px 2rem 2rem;
             background: linear-gradient(135deg, #fff 0%, var(--light-gray) 100%);
+            overflow: hidden;
+        }
+
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .video-background iframe {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100vw;
+            height: 100vh;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        @media (min-aspect-ratio: 16/9) {
+            .video-background iframe {
+                height: 56.25vw;
+            }
+        }
+
+        @media (max-aspect-ratio: 16/9) {
+            .video-background iframe {
+                width: 177.78vh;
+            }
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                rgba(255, 255, 255, 0.75) 0%,
+                rgba(255, 255, 255, 0.85) 50%,
+                rgba(247, 250, 252, 0.95) 100%
+            );
+            z-index: 1;
         }
 
         .hero-container {
             max-width: 900px;
             margin: 0 auto;
             text-align: center;
+            z-index: 2;
+            position: relative;
         }
 
         .hero-content h1 {
@@ -766,9 +817,17 @@
     </nav>
 
     <!-- Hero Section - PRESERVED EXACTLY AS PER INSTRUCTIONS -->
-    <section class="hero" id="home">
+     <section class="hero" id="home">
+        <div class="video-background">
+            <iframe 
+                src="https://www.youtube.com/embed/PyduSN2Mi0c?autoplay=1&mute=1&loop=1&playlist=PyduSN2Mi0c&controls=0&showinfo=0&rel=0&modestbranding=1"
+                frameborder="0" 
+                allow="autoplay; encrypted-media" 
+                allowfullscreen>
+            </iframe>
+        </div>
+        <div class="video-overlay"></div>
         <div class="hero-container">
-            <div class="hero-content">
                 <h1>Hi, I'm <span>Hristo Radev</span></h1>
                 <h2>Game Producer</h2>
                 <p class="subtitle">Transforming creative visions into shipped games through AGILE leadership, data-driven production, and innovative tool development</p>

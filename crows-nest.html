@@ -6,12 +6,15 @@
     <title>Crow's Nest - Hristo Radev</title>
     <style>
         :root {
-            --primary-earth: #006989;
+            --primary-earth: #006989;  /* Changed to a calmer color from the previous brown, additional explanation in next comment bracket. */
             --primary-dark: #2c2c2c;
-            --accent-coral: #9D79BC;
+            --accent-coral: #9D79BC;  /* Changed from #FF6B6B to a more Violet based pallete through coolors.io, during next claude iteration change the name to cerulean ( for the previous primary-earth ) and african violet ( for the previous coral ) throughout the code, I avoided it so I don't break the references.. */
+            --accent-teal: #4ECDC4;
             --text-dark: #333;
             --text-light: #666;
             --light-gray: #f5f5f5;
+            --medium-gray: #e0e0e0;
+            --shadow-hover: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         * {
@@ -27,17 +30,19 @@
             background: #f7fafc;
         }
 
-       /* Navigation */
+        /* Navigation */
         nav {
-            background: white;
-            padding: 1.5rem 2rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            position: sticky;
+            position: fixed;
             top: 0;
-            z-index: 100;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
-        .nav-content {
+        .nav-container {
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
@@ -46,28 +51,38 @@
         }
 
         .nav-logo {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             font-weight: 700;
-            color: #1a202c;
+        }
+
+        /* Make Hristo Radev clickable */
+        .nav-logo a {
+            color: var(--primary-earth);
             text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-logo a:hover {
+            opacity: 0.8;
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
             list-style: none;
+            gap: 2rem;
         }
 
         .nav-links a {
-            color: #4a5568;
+            color: var(--text-dark);
             text-decoration: none;
+            transition: all 0.3s ease;
             font-weight: 500;
-            transition: color 0.3s;
         }
 
         .nav-links a:hover {
             color: var(--accent-coral);
         }
+       
         .nav-links .nav-cta {
             background: var(--accent-teal);
             color: white;
@@ -303,12 +318,18 @@
     </style>
 </head>
 <body>
+    <!-- Navigation -->
     <nav>
-        <div class="nav-content">
-            <a href="index.html" class="nav-logo">Hristo Radev</a>
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="https://hristor.github.io/#home">Hristo Radev</a>
+            </div>
             <ul class="nav-links">
-                 <li><a href="projects.html" class="nav-cta">Projects</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="projects.html" class="nav-cta">Projects</a></li>
+                <li><a href="#excel">Tools</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
     </nav>

@@ -30,7 +30,7 @@
             background: white;
         }
 
-        /* Navigation */
+         /* Navigation */
         nav {
             position: fixed;
             top: 0;
@@ -55,6 +55,7 @@
             font-weight: 700;
         }
 
+        /* Make Hristo Radev clickable */
         .nav-logo a {
             color: var(--primary-earth);
             text-decoration: none;
@@ -81,10 +82,17 @@
         .nav-links a:hover {
             color: var(--accent-coral);
         }
+       
+        .nav-links .nav-cta {
+            background: var(--accent-teal);
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 5px;
+        }
 
-        .nav-links a.active {
-            color: var(--accent-coral);
-            font-weight: 600;
+        .nav-links .nav-cta:hover {
+            background: #3db3aa;
+            color: white;
         }
 
         /* Page Header */
@@ -306,21 +314,22 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
+ <!-- Navigation -->
     <nav>
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="index.html">Hristo Radev</a>
+                <a href="https://hristor.github.io/#home">Hristo Radev</a>
             </div>
             <ul class="nav-links">
-                <li><a href="index.html#home">Home</a></li>
-                <li><a href="projects.html" class="active">Projects</a></li>
-                <li><a href="index.html#excel">Tools</a></li>
-                <li><a href="index.html#skills">Skills</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="projects.html" class="nav-cta">Projects</a></li>
+                <li><a href="#excel">Tools</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
+
 
     <!-- Page Header -->
     <section class="page-header">
@@ -342,10 +351,10 @@
                     <h3>Ascension Protocol</h3>
                 </div>
                 <div class="project-details">
-                    <div class="project-role">Lead Producer</div>
+                    <div class="project-role">Producer</div>
                     <div class="project-period">April - July 2025</div>
                     <p class="project-description">
-                        Served as vision holder and lead producer for a 10-person team. Managed the full production pipeline without dedicated artists, requiring creative resource allocation.
+                        Served as vision holder and producer for a 10-person team. Managed the full production pipeline without dedicated artists, requiring creative resource allocation.
                     </p>
                     <ul class="project-achievements">
                         <li>Established dual-tool AGILE workflow using GitHub Projects and Codecks</li>

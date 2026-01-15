@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Hristo Radev | Game Producer</title>
+    <style>
+        :root {
+            --primary-earth: #006989;
+            --primary-dark: #2c2c2c;
+            --accent-coral: #9D79BC;
+            --accent-teal: #4ECDC4;
+            --text-dark: #333;
+            --text-light: #666;
+            --light-gray: #f5f5f5;
+            --medium-gray: #e0e0e0;
+            --shadow-hover: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--light-gray);
+        }
+
+        /* Navigation - EXACT COPY FROM INDEX */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .nav-logo a {
+            color: var(--primary-earth);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-logo a:hover {
+            opacity: 0.8;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-coral);
+        }
+
+        .nav-links .nav-cta {
+            background: var(--accent-teal);
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 5px;
+        }
+
+        .nav-links .nav-cta:hover {
+            background: #3db3aa;
+            color: white;
+        }
+
+        .nav-links .active {
+            color: var(--accent-coral);
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 8rem 2rem 3rem;
+            text-align: center;
+            background: white;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        /* CV Container */
+        .cv-container {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 2rem 4rem;
+        }
+
+        .cv-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--accent-coral);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #8a67a8;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn-secondary {
+            background: var(--primary-earth);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #005575;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn:after {
+            content: "↗";
+            font-size: 0.9em;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover:after {
+            transform: translate(2px, -2px);
+            opacity: 1;
+        }
+
+        /* CV Viewer */
+        .cv-viewer {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+            cursor: zoom-in;
+            transition: all 0.3s ease;
+        }
+
+        .cv-viewer:hover {
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .cv-viewer img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Zoom Modal */
+        .zoom-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .zoom-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .zoom-content {
+            max-width: 95%;
+            max-height: 95vh;
+            position: relative;
+        }
+
+        .zoom-content img {
+            max-width: 100%;
+            max-height: 95vh;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .zoom-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 300;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(0,0,0,0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2001;
+        }
+
+        .zoom-close:hover {
+            background: var(--accent-coral);
+            transform: rotate(90deg);
+        }
+
+        .zoom-hint {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            background: rgba(0,0,0,0.7);
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+        }
+
+        /* Back to Top */
+        .back-to-portfolio {
+            text-align: center;
+            padding: 2rem 0 3rem;
+        }
+
+        .back-link {
+            color: var(--primary-earth);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--accent-coral);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .cv-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn {
+                justify-content: center;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .zoom-close {
+                top: 10px;
+                right: 10px;
+                font-size: 2rem;
+                width: 40px;
+                height: 40px;
+            }
+
+            .zoom-hint {
+                font-size: 0.8rem;
+                padding: 0.75rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">Hristo Radev</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="projects.html" class="nav-cta">Projects</a></li>
+                <li><a href="index.html#excel">Tools</a></li>
+                <li><a href="index.html#skills">Skills</a></li>
+                <li><a href="cv.html" class="active">CV</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Curriculum Vitae</h1>
+        <p>Game Producer | Production Leadership & AGILE Management</p>
+    </section>
+
+    <!-- CV Container -->
+    <section class="cv-container">
+        <!-- Action Buttons -->
+        <div class="cv-actions">
+            <a href="HristoRadev_CV.pdf" target="_blank" class="btn btn-primary">
+                Open in New Tab
+            </a>
+            <a href="HristoRadev_CV.pdf" download class="btn btn-secondary">
+                Download PDF
+            </a>
+        </div>
+
+        <!-- CV Viewer (Click to Zoom) -->
+        <div class="cv-viewer" onclick="openZoom()">
+            <img src="HristoRadev_CV.png" alt="Hristo Radev - Game Producer CV" id="cvImage">
+        </div>
+
+    </section>
+
+    <!-- Back to Portfolio -->
+    <div class="back-to-portfolio">
+        <a href="index.html" class="back-link">← Back to Portfolio</a>
+    </div>
+
+    <!-- Zoom Modal -->
+    <div id="zoomModal" class="zoom-modal" onclick="closeZoom()">
+        <span class="zoom-close" onclick="closeZoom()">&times;</span>
+        <div class="zoom-content">
+            <img src="HristoRadev_CV.pdf" alt="Hristo Radev CV - Zoomed">
+            <div class="zoom-hint">Click anywhere to close | ESC to exit</div>
+        </div>
+    </div>
+
+    <script>
+        function openZoom() {
+            const modal = document.getElementById('zoomModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeZoom() {
+            const modal = document.getElementById('zoomModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Keyboard support
+        document.addEventListener('keydown', function(e) {
+            const modal = document.getElementById('zoomModal');
+            if (modal.classList.contains('active') && e.key === 'Escape') {
+                closeZoom();
+            }
+        });
+
+        // Prevent zoom content click from closing
+        document.querySelector('.zoom-content').addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+    </script>
+</body>
+</html>
